@@ -1,3 +1,12 @@
+
+# TL;DR
+
+```bash
+./build-android.sh <path_to_ndk>/android-ndk-r29/ --boost=1.85.0  --arch=arm64-v8a --target-version=34
+```
+
+---
+
 # Boost for Android [![Build Status: GitHub Actions](https://github.com/moritz-wundke/Boost-for-Android/workflows/CI/badge.svg)](https://github.com/moritz-wundke/Boost-for-Android/actions)
 Boost for android is a set of tools to compile the main part of the [Boost C++ Libraries](http://www.boost.org/) for the Android platform.
 

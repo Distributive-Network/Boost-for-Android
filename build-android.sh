@@ -167,6 +167,7 @@ register_option "--with-libraries=<list>" do_with_libraries "Comma separated lis
 do_with_libraries () {
   for lib in $(echo $1 | tr ',' '\n') ; do LIBRARIES="--with-$lib ${LIBRARIES}"; done
 }
+# do_with_libraries "atomic,chrono,container,date_time,filesystem,thread"
 
 register_option "--without-libraries=<list>" do_without_libraries "Comma separated list of libraries to exclude from the build."
 do_without_libraries () {	LIBRARIES="--without-libraries=$1"; }
