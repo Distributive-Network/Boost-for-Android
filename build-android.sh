@@ -161,6 +161,7 @@ do_download ()
 }
 
 #LIBRARIES=--with-libraries=date_time,filesystem,program_options,regex,signals,system,thread,iostreams,locale
+# LIBRARIES="--with-libraries=atomic,chrono,container,date_time,filesystem,json,locale,nowide,program_options,test,thread"
 LIBRARIES=
 register_option "--with-libraries=<list>" do_with_libraries "Comma separated list of libraries to build."
 do_with_libraries () {
@@ -173,7 +174,7 @@ do_without_libraries () {
   for lib in $(echo $1 | tr ',' '\n') ; do LIBRARIES="--without-$lib ${LIBRARIES}"; done
 }
 
-LAYOUT=versioned
+LAYOUT=tagged
 register_option "--layout=<layout>" do_layout "Library naming layout [versioned, tagged, system]."
 do_layout () {
 	LAYOUT=$1;
@@ -665,12 +666,16 @@ echo "Building boost for android for $ARCH"
         -d+2                         \
         --ignore-site-config         \
         -j$NCPU                      \
+        define=BOOST_BIND_GLOBAL_PLACEHOLDERS \
         target-os=${TARGET_OS}       \
         toolset=${TOOLSET_ARCH}      \
         $cflags                      \
         $cxxflags                    \
         link=static                  \
+        runtime-link=static          \
         threading=multi              \
+        --abbreviate-paths           \
+        --build-type=complete        \
         --layout=${LAYOUT}           \
         $WITHOUT_LIBRARIES           \
         $PYTHON_BUILD                \
