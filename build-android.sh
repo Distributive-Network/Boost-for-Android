@@ -700,6 +700,14 @@ if [ $PREFIX ]; then
     mkdir -p $PREFIX/$ARCH
     cp -r $PROGDIR/$BUILD_DIR/out/$ARCH/lib $PREFIX/$ARCH/
     cp -r $PROGDIR/$BUILD_DIR/out/$ARCH/include $PREFIX/$ARCH/
+else
+    echo "Packaging boost for android for $ARCH to $PROGDIR/boost-build-android-$ARCH.zip"
+    mkdir -p $PROGDIR/$BUILD_DIR/install
+    cp -r $PROGDIR/$BUILD_DIR/out/$ARCH/lib $PROGDIR/$BUILD_DIR/install/
+    cp -r $PROGDIR/$BUILD_DIR/out/$ARCH/include $PROGDIR/$BUILD_DIR/install/
+    cd $PROGDIR/$BUILD_DIR
+    zip -q -r $PROGDIR/boost-build-android-$ARCH.zip install
+    cd -
 fi
 
 done # for ARCH in $ARCHLIST
