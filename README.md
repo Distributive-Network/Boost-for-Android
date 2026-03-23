@@ -2,7 +2,7 @@
 # TL;DR
 
 ```bash
-./build-android.sh <path_to_ndk>/android-ndk-r29/ --boost=1.85.0  --arch=arm64-v8a --target-version=34
+./build-android.sh <path_to_ndk>/android-ndk-r29/ --boost=1.85.0  --arch=arm64-v8a --target-version=26
 ```
 
 ---
